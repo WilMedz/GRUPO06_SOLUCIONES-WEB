@@ -24,3 +24,4 @@ public class ProductoService {
         repository.deleteById(id);
     }
 }
+// Lógica de negocio para productos de la botica
