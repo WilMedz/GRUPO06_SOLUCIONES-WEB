@@ -1,0 +1,144 @@
+:root {
+    --primary-dark: #0f172a;
+    --corporate-blue: #1e40af;
+    --form-label: #475569;
+    --bg-card: rgba(235, 238, 243, 0.98); /* Gris muy claro y sólido */
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    
+    /* FONDO LISO SIN TEXTURA */
+    background-color: #0b1120;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(30, 64, 175, 0.45) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.35) 0px, transparent 50%);
+    background-attachment: fixed;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 1150px;
+}
+
+/* Header */
+.app-header {
+    background: rgba(15, 23, 42, 0.9);
+    padding: 20px 40px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app-header h1 { color: white; margin: 0; font-size: 1.5rem; display: flex; align-items: center; gap: 15px; }
+
+/* Dashboard */
+.dashboard {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 25px;
+}
+
+/* Tarjeta del Formulario (Gris claro redondeada) */
+.card {
+    background: var(--bg-card);
+    border-radius: 28px;
+    padding: 35px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.card-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    color: var(--corporate-blue);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* FORMULARIO PREMIUM */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 800;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #1e293b;
+    margin-bottom: 8px;
+    display: block;
+}
+
+form input {
+    width: 100%;
+    padding: 14px 18px;
+    background: white;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    font-family: inherit;
+    font-weight: 600;
+    box-sizing: border-box;
+}
+
+form button {
+    width: 100%;
+    background: linear-gradient(135deg, #1e3a8a, #0f172a);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* TABLA E ICONOS DE STOCK */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+th {
+    padding: 10px 15px;
+    color: #475569;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+tr td {
+    background: white;
+    padding: 18px;
+}
+
+tr td:first-child { border-radius: 15px 0 0 15px; }
+tr td:last-child { border-radius: 0 15px 15px 0; }
+
+.price-tag { color: var(--corporate-blue); font-weight: 800; }
+
+/* Casilla de Stock con icono interno */
+.stock-badge {
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
