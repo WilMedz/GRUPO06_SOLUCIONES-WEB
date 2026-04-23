@@ -4,6 +4,8 @@ import com.botica.botica.model.Producto;
 import com.botica.botica.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
+
 
 import java.util.List;
 
@@ -20,9 +22,9 @@ public class ProductoRestController {
     }
 
     @PostMapping
-    public void guardar(@RequestBody Producto producto) {
-        service.guardar(producto);
-    }
+    public void guardar(@Valid @RequestBody Producto producto) { 
+    service.guardar(producto);
+}
 
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable Long id) {
