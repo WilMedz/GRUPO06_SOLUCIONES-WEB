@@ -23,4 +23,10 @@ public class ProductoRestController {
     public void guardar(@RequestBody Producto producto) {
         service.guardar(producto);
     }
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable Long id) {
+    service.eliminar(id);
+    }
 }
+// Endpoints para consumo de API JSON
