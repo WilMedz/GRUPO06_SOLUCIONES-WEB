@@ -1,0 +1,30 @@
+package com.botica.botica.service;
+
+import com.botica.botica.model.DetalleVenta;
+import com.botica.botica.repository.DetalleVentaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+@Service
+public class DetalleVentaService {
+
+    @Autowired
+    private DetalleVentaRepository repository;
+
+    public List<DetalleVenta> listarTodos() {
+        return repository.findAll();
+    }
+
+    public DetalleVenta guardar(DetalleVenta detalle) {
+        // Si no envías subtotal, lo calculamos automáticamente
+        if (detalle.getCantidad() != null && detalle.getPrecioUnitario() != null) {
+            detalle.setSubtotal(detalle.getCantidad() * detalle.getPrecioUnitario());
+        }
+        return repository.save(detalle);
+    }
+
+    public void eliminar(Long id) {
+        repository.deleteById(id);
+    }
+}
