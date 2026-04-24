@@ -49,7 +49,7 @@
                             <th>ACCIONES</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tabla-productos-body">
                         <tr th:each="p : ${listaProductos}">
                             <td th:text="${p.id}" style="color: #94a3b8;"></td>
                             <td th:text="${p.nombre}" style="font-weight: 600;"></td>
@@ -76,5 +76,55 @@
             </div> 
         </div> 
     </div> 
+
+
+    <script>
+    async function cargarProductos() {
+        try {
+            const response = await fetch('http://localhost:8081/api/productos');
+            const productos = await response.json();
+            const tbody = document.getElementById('tabla-productos-body');
+            tbody.innerHTML = ''; 
+
+            productos.forEach(p => {
+                const fila = `
+                    <tr>
+                        <td style="color: #94a3b8;">${p.id}</td>
+                        <td style="font-weight: 600;">${p.nombre.toUpperCase()}</td>
+                        <td class="price-tag">S/ ${p.precio.toFixed(2)}</td>
+                        <td>
+                            <div class="stock-container">
+                                <div class="stock-badge">
+                                    <i class="fa-solid fa-cubes"></i>
+                                    <span>${p.stock}</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="text-align: center;">
+                            <a href="#" onclick="eliminarProducto(${p.id})" style="color: #ef4444; font-size: 1.2rem;">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += fila;
+            });
+        } catch (error) {
+            console.error("Error en la botica:", error);
+        }
+    }
+
+    
+    function eliminarProducto(id) {
+        if(confirm('¿Desea eliminar este producto?')) {
+            console.log("Eliminando producto ID:", id);
+            
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', cargarProductos);
+</script>
+
+
 </body>
 </html>
