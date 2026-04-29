@@ -1,27 +1,26 @@
 package com.botica.botica.controller.api;
 
-import com.botica.botica.model.Usuario;
-import com.botica.botica.service.UsuarioService;
+import com.botica.botica.model.Proveedor;
+import com.botica.botica.service.ProveedorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/usuarios")
-public class UsuarioRestController {
+@RequestMapping("/api/proveedores")
+public class ProveedorRestController {
 
     @Autowired
-    private UsuarioService service;
+    private ProveedorService service;
 
     @GetMapping
-    public List<Usuario> listar() {
+    public List<Proveedor> listar() {
         return service.listarTodos();
     }
 
     @PostMapping
-    public void guardar(@RequestBody Usuario usuario) {
-        service.guardar(usuario);
+    public Proveedor guardar(@RequestBody Proveedor proveedor) {
+        return service.guardar(proveedor);
     }
 
     @DeleteMapping("/{id}")
