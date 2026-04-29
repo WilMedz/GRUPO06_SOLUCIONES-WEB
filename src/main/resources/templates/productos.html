@@ -116,10 +116,16 @@
 
     
     function eliminarProducto(id) {
-        if(confirm('¿Desea eliminar este producto?')) {
-            console.log("Eliminando producto ID:", id);
-            
-        }
+    if(confirm('¿Desea eliminar este producto?')) {
+        fetch(`http://localhost:8081/api/productos/${id}`, {
+            method: 'DELETE'
+        })
+        .then(() => {
+            cargarProductos();
+        })
+        .catch(error => {
+            console.error("Error al eliminar:", error);
+        });
     }
 
     document.addEventListener('DOMContentLoaded', cargarProductos);
