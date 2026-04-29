@@ -16,8 +16,8 @@ public class ProductoService {
         return repository.findAll();
     }
 
-    public void guardar(Producto producto) {
-        repository.save(producto);
+    public Producto guardar(Producto producto) {
+    return repository.save(producto);
     }
 
     public void eliminar(Long id) {
