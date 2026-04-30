@@ -23,26 +23,37 @@ public class ProductoRestController {
         return ResponseEntity.ok(service.listarTodos());
     }
 
-    // POST http://localhost:8080/api/productos
+    // probar en thunderclient con POST http://localhost:8080/api/productos
     @PostMapping
     public ResponseEntity<Producto> guardar(@Valid @RequestBody Producto producto) {
         Producto guardado = service.guardar(producto);
         return ResponseEntity.status(HttpStatus.CREATED).body(guardado);
     }
 
-    // PUT http://localhost:8080/api/productos/{id}
+    // probar en thunderclient con PUT http://localhost:8080/api/productos/{id}
     @PutMapping("/{id}")
     public ResponseEntity<Producto> actualizar(@PathVariable Long id, @Valid @RequestBody Producto producto) {
-        producto.setId(id);
-        Producto actualizado = service.guardar(producto);
-        return ResponseEntity.ok(actualizado);
+    Producto existente = service.buscarPorId(id);
+    
+    if (existente == null) {
+        return ResponseEntity.notFound().build();
     }
 
-    // DELETE http://localhost:8080/api/productos/{id}
+    // Actualizamos solo los campos
+    existente.setNombre(producto.getNombre());
+    existente.setPrecio(producto.getPrecio());
+    existente.setStock(producto.getStock());
+
+    Producto actualizado = service.guardar(existente);
+    return ResponseEntity.ok(actualizado);
+}
+
+    // probar en thunderclient con DELETE http://localhost:8080/api/productos/{id}
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         service.eliminar(id);
         return ResponseEntity.noContent().build();
     }
+    
 }
 //api JSON

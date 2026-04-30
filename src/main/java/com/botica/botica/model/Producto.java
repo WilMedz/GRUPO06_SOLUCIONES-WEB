@@ -14,7 +14,7 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    // Las validaciones van aquí, justo antes del atributo
+    // validaciones 
     @NotBlank(message = "Complete el nombre")
     private String nombre;
 
@@ -26,7 +26,7 @@ public class Producto {
     @Min(value = 0, message = "El stock no puede ser negativo")
     private Integer stock;
 
-    // --- GETTERS Y SETTERS ---
+    // getters setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

@@ -16,6 +16,10 @@ public class ProductoService {
         return repository.findAll();
     }
 
+    public Producto buscarPorId(Long id) {
+    return repository.findById(id).orElse(null);
+    }
+
     public Producto guardar(Producto producto) {
     return repository.save(producto);
     }
@@ -24,4 +28,3 @@ public class ProductoService {
         repository.deleteById(id);
     }
 }
-// Lógica de negocio para productos de la botica
