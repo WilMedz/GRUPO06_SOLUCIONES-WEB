@@ -17,7 +17,7 @@ public class DetalleVentaService {
     }
 
     public DetalleVenta guardar(DetalleVenta detalle) {
-        // Si no envías subtotal, lo calculamos automáticamente
+        // Calculamos subtotal automáticamente si no lo envían
         if (detalle.getCantidad() != null && detalle.getPrecioUnitario() != null) {
             detalle.setSubtotal(detalle.getCantidad() * detalle.getPrecioUnitario());
         }
